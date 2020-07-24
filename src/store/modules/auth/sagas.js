@@ -7,7 +7,7 @@ import { authSuccess, authFailure } from './actions';
 export function* auth({ payload }) {
     const { email, password } = payload;
     try {
-        const response = yield call(api.post, 'sessions', { email, password });
+        const response = yield call(api.post, '/sessions', { email, password });
         const { token, user } = response.data;
         if (user.provider) {
             Alert.alert('Erro no login', 'usuário é prestador de serviço');
@@ -18,6 +18,7 @@ export function* auth({ payload }) {
         yield put(authSuccess(token, user));
         // history.push('/dashboard');
     } catch (error) {
+        console.tron.log(error);
         Alert.alert(
             'Falha na autenticação',
             'usuário ou senha incorretos, tente novamente'

@@ -16,7 +16,6 @@ export function* signup({ payload }) {
             name,
             email,
             password,
-            provider: true,
         });
         yield put(userRegisterProfileSuccess());
         // history.push('/');
