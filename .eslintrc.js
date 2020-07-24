@@ -26,5 +26,6 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'no-console': 'off',
         'no-undef': 'off',
+        cammelcase: 'off',
     },
 };
