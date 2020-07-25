@@ -27,12 +27,11 @@ export function* signup({ payload }) {
 }
 
 export function* update({ payload }) {
-    const { name, email, avatar_id, ...rest } = payload.data;
+    const { name, email, ...rest } = payload.data;
     try {
         const profile = {
             name,
             email,
-            avatar_id,
             ...(rest.oldPassword ? rest : {}),
         };
         const response = yield call(api.put, 'users', profile);

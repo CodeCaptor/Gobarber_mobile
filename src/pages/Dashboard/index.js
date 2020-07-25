@@ -5,7 +5,6 @@ import { Container, Title, List } from './styles';
 import { Background } from '../../components/Background';
 import Appointment from '../../components/Appointment';
 
-const data = [1, 2, 3, 4, 5];
 export default function Dashboard() {
     const [appointments, setAppointments] = useState([]);
 
@@ -15,7 +14,7 @@ export default function Dashboard() {
             setAppointments(response.data);
         }
         getAppointmentsData();
-    });
+    }, []);
     async function handleCancel(id) {
         const response = await api.delete(`appointments/${id}`);
         setAppointments(
