@@ -8,8 +8,11 @@ import {
     FormInput,
     Separator,
     SubmitButton,
+    LogoutButton,
 } from './styles';
 import { userUpdateProfileRequest } from '../../store/modules/user/actions';
+import { authSignOut } from '../../store/modules/auth/actions';
+
 import { Background } from '../../components/Background';
 
 export default function Profile() {
@@ -43,6 +46,9 @@ export default function Profile() {
                 confirmPassword: confirmpasswordField,
             })
         );
+    }
+    function handleLogout() {
+        dispatch(authSignOut());
     }
     return (
         <Background>
@@ -108,6 +114,9 @@ export default function Profile() {
                     <SubmitButton onPress={handleSubmit}>
                         Atualizar perfil
                     </SubmitButton>
+                    <LogoutButton onPress={handleLogout}>
+                        Sair do GoBarber
+                    </LogoutButton>
                 </Form>
             </Container>
         </Background>
