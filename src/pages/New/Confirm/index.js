@@ -47,7 +47,7 @@ Confirm.navigationOptions = ({ navigation }) => ({
     headerLeft: () => (
         <TouchableOpacity
             onPress={() => {
-                navigation.navigate('New');
+                navigation.goBack();
             }}
         >
             <Icon name="chevron-left" size={20} color="#fff" />
