@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { format } from 'date-fns';
 import { DatePickerAndroid } from 'react-native';
 import pt from 'date-fns/locale/pt';
