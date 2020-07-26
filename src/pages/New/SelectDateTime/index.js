@@ -9,19 +9,22 @@ import { Container, HourList, Hour, Title } from './styles';
 export default function SelectDateTime({ navigation }) {
     const [date, setDate] = useState(new Date());
     const [hours, setHours] = useState([]);
-    const provider = navigation.state.params.item.item.id;
+    const provider = navigation.state.params.item.item;
     useEffect(() => {
         async function loadAvaiableData() {
-            const response = await api.get(`providers/${provider}/avaiable`, {
-                params: { date: date.getTime() },
-            });
+            const response = await api.get(
+                `providers/${provider.id}/avaiable`,
+                {
+                    params: { date: date.getTime() },
+                }
+            );
             setHours(response.data);
         }
         loadAvaiableData();
         console.tron.log(hours);
     }, [date]);
-    function handleRequestReservation(time) {
-        navigation.navigate('Confirm', provider, time);
+    function handleRequestReservation(value) {
+        navigation.navigate('Confirm', { provider, value });
     }
     return (
         <Background>
@@ -34,7 +37,7 @@ export default function SelectDateTime({ navigation }) {
                         <Hour
                             enabled={item.avaiable}
                             onPress={() => {
-                                handleRequestReservation(item.time);
+                                handleRequestReservation(item.value);
                             }}
                         >
                             <Title>{item.time}</Title>
