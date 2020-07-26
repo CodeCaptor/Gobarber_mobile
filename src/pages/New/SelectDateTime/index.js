@@ -20,8 +20,8 @@ export default function SelectDateTime({ navigation }) {
         loadAvaiableData();
         console.tron.log(hours);
     }, [date]);
-    function handleSelectHOur() {
-        navigation.navigate('Confirm', proider, time);
+    function handleRequestReservation(time) {
+        navigation.navigate('Confirm', provider, time);
     }
     return (
         <Background>
@@ -34,7 +34,7 @@ export default function SelectDateTime({ navigation }) {
                         <Hour
                             enabled={item.avaiable}
                             onPress={() => {
-                                handleSelectHOur(item.value);
+                                handleRequestReservation(item.time);
                             }}
                         >
                             <Title>{item.time}</Title>
